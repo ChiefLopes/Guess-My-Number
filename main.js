@@ -1,9 +1,8 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let number = document.querySelector(".number");
 
-let score = 5;
-let highscore = document.querySelector(".highscore").value = 0;
-console.log(highscore);
+let score = 20;
+let highscore = 0;
 
 
 document.querySelector(".check").addEventListener(
@@ -25,11 +24,13 @@ document.querySelector(".check").addEventListener(
        number.style.backgroundColor = "#fff";
 
       //  LAst touhed....................
+      //  if the score is greater than highscore, then the current score should be the new highscore
        if (score > highscore) {
          highscore = score; 
+         document.querySelector('.highscore').textContent = highscore
        }
 
-      // ! when the guessed number is higher than the secret number
+      // ! when the guessed number is higher thn the secret number
      } else if (guess > secretNumber) {
        if (score > 1) {
          document.querySelector(".message").textContent = "Number too high!";
@@ -65,7 +66,7 @@ document.querySelector(".check").addEventListener(
 
 let againBtn = document.querySelector(".again").addEventListener(
   "click", () => {
-    score = 5;
+    score = 20;
     secretNumber = Math.trunc(Math.random() * 20) + 1;
 
     document.querySelector(".message").textContent = "Start guessing...";
