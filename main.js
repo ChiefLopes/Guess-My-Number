@@ -49,7 +49,7 @@ document.querySelector(".check").addEventListener("click", () => {
         score--;
         document.querySelector(".score").textContent = score;
       } else {
-        document.querySelector(".message").textContent = "Game Over!";
+        displayMessage("Game Over...😞")
         document.querySelector(".score").textContent = 0;
       }
    }
@@ -91,7 +91,7 @@ let againBtn = document
     score = 20;
     secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-    document.querySelector(".message").textContent = "Start guessing...";
+    displayMessage("Start Guessing...😇")
     document.querySelector(".score").textContent = score;
     number.textContent = "?";
     document.querySelector(".guess").value = "";
@@ -99,7 +99,7 @@ let againBtn = document
     number.style.width = "15rem";
     number.style.backgroundColor = "#fff";
     number.style.color = "#000";
-  });
+  });  
 
 
   
