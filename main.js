@@ -4,16 +4,24 @@ let number = document.querySelector(".number");
 let score = 20;
 let highscore = 0;
 
+/** function to call instead of repeating document.querySelector(".message").textContent = "No number entered!"; 
+ * when no number is entered... 
+ *  */   
+const displayMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+}
+
+
 document.querySelector(".check").addEventListener("click", () => {
   let guess = Number(document.querySelector(".guess").value);
 
   //! when there is no input
   if (!guess) {
-    document.querySelector(".message").textContent = "No number entered!";
+    displayMessage("⛔No number entered...❗" );
 
     //! When player wins or the guess number is equals to the secret number
   } else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "That's Correct!";
+    displayMessage("🎈wow! That's correct!🙌 ");
     number.textContent = secretNumber;
 
     document.querySelector("body").style.background = "#60b347";
@@ -27,51 +35,54 @@ document.querySelector(".check").addEventListener("click", () => {
       document.querySelector(".highscore").textContent = highscore;
     }
 
-    // //! REFACTORING------------ when guess is different from secret number
-    // else if (guess !== secretNumber) {
-    //   if (score > 1) {
-    //     document.querySelector(".message").textContent = guess > secretNumber ? "Number too high" : "Number too low";
-    //     document.querySelector("body").style.backgroundColor = "#350101";
-    //     number.style.width = "30rem";
-    //     number.style.backgroundColor = "red";
+    // // //! REFACTORING------------ when guess is different from secret number
+   
+    // ! When the guess is wrong...
+  } else if (guess !== secretNumber) {
+      if (score > 1) { 
+        document.querySelector(".message").textContent = guess > secretNumber ? "Number too high!" : "Number too low!";
+        document.querySelector("body").style.backgroundColor =
+          guess > secretNumber ? "red" : "#350101";
+        number.style.width = "30rem";
+        number.style.backgroundColor = "#350101";
 
-    //     score--;
-    //     document.querySelector(".score").textContent = score;
-    //   } else {
-    //     document.querySelector(".message").textContent = "Game Over!";
-    //     document.querySelector(".score").textContent = 0;
-    //   }
-    // }
-    // ! when the guessed number is higher than the secret number
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "Number too high!";
-      document.querySelector("body").style.backgroundColor = "red";
-      number.style.width = "30rem";
-      number.style.backgroundColor = "#350101";
+        score--;
+        document.querySelector(".score").textContent = score;
+      } else {
+        document.querySelector(".message").textContent = "Game Over!";
+        document.querySelector(".score").textContent = 0;
+      }
+   }
+       // ! when the guessed number is higher than the secret number
+  // } else if (guess > secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector(".message").textContent = "Number too high!";
+  //     document.querySelector("body").style.backgroundColor = "red";
+  //     number.style.width = "30rem";
+  //     number.style.backgroundColor = "#350101";
 
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent = "Game Over!";
-      document.querySelector(".score").textContent = 0;
-    }
-  }
-  // ! when the guessed number is lower than the secret number
-  else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "Number too low!";
-      document.querySelector("body").style.backgroundColor = "#350101";
-      number.style.width = "30rem";
-      number.style.backgroundColor = "red";
+  //     score--;
+  //     document.querySelector(".score").textContent = score;
+  //   } else {
+  //     document.querySelector(".message").textContent = "Game Over!";
+  //     document.querySelector(".score").textContent = 0;
+  //   }
+  // }
+  // // ! when the guessed number is lower than the secret number
+  // else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector(".message").textContent = "Number too low!";
+  //     document.querySelector("body").style.backgroundColor = "#350101";
+  //     number.style.width = "30rem";
+  //     number.style.backgroundColor = "red";
 
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent = "Game Over!";
-      document.querySelector(".score").textContent = 0;
-    }
-  }
+  //     score--;
+  //     document.querySelector(".score").textContent = score;
+  //   } else {
+  //     document.querySelector(".message").textContent = "Game Over!";
+  //     document.querySelector(".score").textContent = 0;
+  //   }
+  // }
 });
 
 let againBtn = document
@@ -89,3 +100,6 @@ let againBtn = document
     number.style.backgroundColor = "#fff";
     number.style.color = "#000";
   });
+
+
+  
