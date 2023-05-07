@@ -11,6 +11,10 @@ const displayMessage = function (message) {
   document.querySelector(".message").textContent = message;
 }
 
+const bgColor = function (color) {
+   document.querySelector("body").style.background = color;
+}
+
 
 document.querySelector(".check").addEventListener("click", () => {
   let guess = Number(document.querySelector(".guess").value);
@@ -24,7 +28,7 @@ document.querySelector(".check").addEventListener("click", () => {
     displayMessage("🎈wow! That's correct!🙌 ");
     number.textContent = secretNumber;
 
-    document.querySelector("body").style.background = "#60b347";
+    bgColor("#60b347");
     number.style.width = "30rem";
     number.style.color = "#60b347";
     number.style.backgroundColor = "#fff";
@@ -40,7 +44,8 @@ document.querySelector(".check").addEventListener("click", () => {
     // ! When the guess is wrong...
   } else if (guess !== secretNumber) {
       if (score > 1) { 
-        document.querySelector(".message").textContent = guess > secretNumber ? "Number too high!" : "Number too low!";
+        document.querySelector(".message").textContent =
+          guess > secretNumber ? "Number too high!...⚡" : "Number too low!...🔅";
         document.querySelector("body").style.backgroundColor =
           guess > secretNumber ? "red" : "#350101";
         number.style.width = "30rem";
@@ -95,11 +100,10 @@ let againBtn = document
     document.querySelector(".score").textContent = score;
     number.textContent = "?";
     document.querySelector(".guess").value = "";
-    document.querySelector("body").style.backgroundColor = "#222";
+    bgColor("#222");
     number.style.width = "15rem";
     number.style.backgroundColor = "#fff";
     number.style.color = "#000";
   });  
 
 
-  
