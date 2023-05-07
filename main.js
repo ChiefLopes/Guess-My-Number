@@ -1,4 +1,8 @@
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
+const roundedNumber = () => {
+     Math.trunc(Math.random() * 20) + 1;
+}
+
+let secretNumber = roundedNumber();
 let number = document.querySelector(".number");
 
 let score = 20;
@@ -49,7 +53,6 @@ document.querySelector(".check").addEventListener("click", () => {
         document.querySelector("body").style.backgroundColor =
           guess > secretNumber ? "red" : "#350101";
         number.style.width = "30rem";
-        number.style.backgroundColor = "#350101";
 
         score--;
         document.querySelector(".score").textContent = score;
